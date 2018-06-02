@@ -168,7 +168,7 @@ bool ArmPlugin::createAgent()
 
 			
 	/* TODO - Create DQN Agent */
-	agent = new dqnAgent();
+	agent = dqnAgent::Create;
 	
 	if( !agent )
 	{
