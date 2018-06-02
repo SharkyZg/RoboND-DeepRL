@@ -38,6 +38,7 @@
 
 #define INPUT_WIDTH   512
 #define INPUT_HEIGHT  512
+#define NUMBER_OF_ACTIONS 8
 #define OPTIMIZER "None"
 #define LEARNING_RATE 0.0f
 #define REPLAY_MEMORY 10000
@@ -168,7 +169,7 @@ bool ArmPlugin::createAgent()
 
 			
 	/* TODO - Create DQN Agent */
-	dqnAgent* agent = dqnAgent::Create;
+	agent = dqnAgent::Create(INPUT_WIDTH, INPUT_HEIGHT, INPUT_CHANNELS, NUMBER_OF_ACTIONS, OPTIMIZER, LEARNING_RATE, REPLAY_MEMORY, BATCH_SIZE, GAMMA, EPS_START, EPS_END, EPS_DECAY, USE_LSTM, LSTM_SIZE, ALLOW_RANDOM, DEBUG_DQN);
 	
 	if( !agent )
 	{
