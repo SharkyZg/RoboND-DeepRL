@@ -320,9 +320,9 @@ bool ArmPlugin::updateAgent()
 	float velocity = vel[action / 2];
 
 	if (action % 2 == 0)
-		float velocity += actionVelDelta;
+		velocity += actionVelDelta;
 	else
-		float velocity -= actionVelDelta;
+		velocity -= actionVelDelta;
 
 	if (velocity < VELOCITY_MIN)
 		velocity = VELOCITY_MIN;
