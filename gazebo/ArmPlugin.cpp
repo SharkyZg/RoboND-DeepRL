@@ -320,7 +320,7 @@ bool ArmPlugin::updateAgent()
 	{
 		float velocity = -actionVelDelta;
 	}
-	if !(action % 2)
+	if (!action % 2)
 	{
 		float velocity = actionVelDelta;
 	}
