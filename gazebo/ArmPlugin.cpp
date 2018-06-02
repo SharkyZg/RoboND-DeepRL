@@ -161,19 +161,15 @@ void ArmPlugin::Load(physics::ModelPtr _parent, sdf::ElementPtr /*_sdf*/)
 bool ArmPlugin::createAgent()
 {
 
-	agent = new dqnAgent();
+	
 
 	if( agent != NULL )
 		return true;
 
 			
-	/*
-	/ TODO - Create DQN Agent
-	/
-	*/
+	/* TODO - Create DQN Agent */
+	agent = new dqnAgent();
 	
-	agent = NULL;
-
 	if( !agent )
 	{
 		printf("ArmPlugin - failed to create DQN agent\n");
