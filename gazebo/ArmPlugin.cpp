@@ -316,14 +316,13 @@ bool ArmPlugin::updateAgent()
 	/ TODO - Increase or decrease the joint velocity based on whether the action is even or odd
 	/
 	*/
-	if (!velocity)
-	{
-		float velocity = 0.0; // TODO - Set joint velocity based on whether action is even or odd.
-	}
-	else if (action % 2 == 0)
-		velocity = velocity + actionVelDelta;
+
+	float velocity = vel[action / 2];
+
+	if (action % 2 == 0)
+		float velocity += actionVelDelta;
 	else
-		velocity = velocity - actionVelDelta;
+		float velocity -= actionVelDelta;
 
 	if (velocity < VELOCITY_MIN)
 		velocity = VELOCITY_MIN;
