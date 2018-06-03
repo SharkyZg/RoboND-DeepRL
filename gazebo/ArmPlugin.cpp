@@ -17,7 +17,7 @@
 #define JOINT_MAX 2.0f
 
 // Turn on velocity based control
-#define VELOCITY_CONTROL false
+#define VELOCITY_CONTROL true
 #define VELOCITY_MIN -0.2f
 #define VELOCITY_MAX 0.2f
 
@@ -264,7 +264,7 @@ void ArmPlugin::onCollisionMsg(ConstContactsPtr &contacts)
 
 		if (collision_gripper)
 		{
-			rewardHistory = 1000 * REWARD_WIN;
+			rewardHistory = 100000 * REWARD_WIN;
 
 			newReward = true;
 			endEpisode = true;
@@ -273,7 +273,7 @@ void ArmPlugin::onCollisionMsg(ConstContactsPtr &contacts)
 		}
 		else if (collision_tube && !GRIPPER_ONLY)
 		{
-			rewardHistory = 1000 * REWARD_WIN;
+			rewardHistory = 100000 * REWARD_WIN;
 
 			newReward = true;
 			endEpisode = true;
