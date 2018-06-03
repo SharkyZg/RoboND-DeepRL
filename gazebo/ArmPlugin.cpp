@@ -43,7 +43,7 @@
 #define LEARNING_RATE 0.1f
 #define REPLAY_MEMORY 20000
 #define BATCH_SIZE 512
-#define USE_LSTM true
+#define USE_LSTM false
 #define LSTM_SIZE 256
 #define ALPHA 0.05
 
