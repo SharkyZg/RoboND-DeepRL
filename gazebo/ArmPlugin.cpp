@@ -35,7 +35,7 @@
 / TODO - Tune the following hyperparameters
 /
 */
-
+#define GRIPPER_ONLY true
 #define INPUT_WIDTH 64
 #define INPUT_HEIGHT 64
 #define NUMBER_OF_ACTIONS 2 * DOF
@@ -271,7 +271,7 @@ void ArmPlugin::onCollisionMsg(ConstContactsPtr &contacts)
 
 			return;
 		}
-		else if (collision_tube)
+		else if (collision_tube && !GRIPPER_ONLY)
 		{
 			rewardHistory = 1000 * REWARD_WIN;
 
