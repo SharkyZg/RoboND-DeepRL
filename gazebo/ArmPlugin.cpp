@@ -45,7 +45,7 @@
 #define BATCH_SIZE 512
 #define USE_LSTM true
 #define LSTM_SIZE 256
-#define ALPHA 0.1
+#define ALPHA 0.05
 
 /*
 / TODO - Define Reward Parameters
