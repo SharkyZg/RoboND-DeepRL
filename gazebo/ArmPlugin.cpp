@@ -38,7 +38,7 @@
 
 #define INPUT_WIDTH 512
 #define INPUT_HEIGHT 512
-#define NUMBER_OF_ACTIONS 2*DOF
+#define NUMBER_OF_ACTIONS 2 * DOF
 #define OPTIMIZER "Adam"
 #define LEARNING_RATE 0.01f
 #define REPLAY_MEMORY 10000
@@ -354,7 +354,7 @@ bool ArmPlugin::updateAgent()
 	/
 	*/
 	float joint = ref[action / 2]; // TODO - Set joint position based on whether action is even or odd.
-	
+
 	if (action % 2 == 0)
 		joint += actionJointDelta;
 	else
@@ -579,17 +579,19 @@ void ArmPlugin::OnUpdate(const common::UpdateInfo &updateInfo)
 		/ TODO - set appropriate Reward for robot hitting the ground.
 		/
 		*/
+		bool checkGroundContact = gripBBox.min.z <= groundContact;
 
-		/*if(checkGroundContact)
+		if (checkGroundContact)
 		{
-						
-			if(DEBUG){printf("GROUND CONTACT, EOE\n");}
+			if (DEBUG)
+			{
+				printf("GROUND CONTACT, EOE\n");
+			}
 
-			rewardHistory = None;
-			newReward     = None;
-			endEpisode    = None;
+			rewardHistory = 100 * REWARD_LOSS;
+			newReward = true;
+			endEpisode = true;
 		}
-		*/
 
 		/*
 		/ TODO - Issue an interim reward based on the distance to the object
