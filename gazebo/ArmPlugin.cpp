@@ -36,8 +36,8 @@
 /
 */
 
-#define INPUT_WIDTH 128
-#define INPUT_HEIGHT 128
+#define INPUT_WIDTH 64
+#define INPUT_HEIGHT 64
 #define NUMBER_OF_ACTIONS 2 * DOF
 #define OPTIMIZER "RMSprop"
 #define LEARNING_RATE 0.1f
