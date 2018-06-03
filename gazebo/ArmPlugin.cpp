@@ -559,7 +559,7 @@ void ArmPlugin::OnUpdate(const common::UpdateInfo &updateInfo)
 	if (maxEpisodeLength > 0 && episodeFrames > maxEpisodeLength)
 	{
 		printf("ArmPlugin - triggering EOE, episode has exceeded %i frames\n", maxEpisodeLength);
-		rewardHistory = REWARD_LOSS*1000;
+		rewardHistory = REWARD_LOSS*10;
 		newReward = true;
 		endEpisode = true;
 	}
@@ -602,7 +602,7 @@ void ArmPlugin::OnUpdate(const common::UpdateInfo &updateInfo)
 				printf("GROUND CONTACT, EOE\n");
 			}
 
-			rewardHistory = 1000 * REWARD_LOSS;
+			rewardHistory = 10 * REWARD_LOSS;
 			newReward = true;
 			endEpisode = true;
 		}
