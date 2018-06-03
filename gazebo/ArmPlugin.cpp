@@ -262,7 +262,7 @@ void ArmPlugin::onCollisionMsg(ConstContactsPtr &contacts)
 		bool collision_gripper_object = strcmp(contacts->contact(i).gripper_link().c_str(), COLLISION_ITEM) == 0;
 		bool collision_link2_object = strcmp(contacts->contact(i).collision2().c_str(), COLLISION_ITEM) == 0;
 
-		if (collision_object && collision_gripper)
+		if (collision_gripper_object)
 		{
 			rewardHistory = 1000 * REWARD_WIN;
 
@@ -271,7 +271,7 @@ void ArmPlugin::onCollisionMsg(ConstContactsPtr &contacts)
 
 			return;
 		}
-		else if (collision_gripper)
+		else if (collision_link2_object)
 		{
 			rewardHistory = 100 * REWARD_WIN;
 
