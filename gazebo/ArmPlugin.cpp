@@ -45,6 +45,7 @@
 #define BATCH_SIZE 8
 #define USE_LSTM false
 #define LSTM_SIZE 32
+#define ALPHA 0.05
 
 /*
 / TODO - Define Reward Parameters
@@ -598,26 +599,27 @@ void ArmPlugin::OnUpdate(const common::UpdateInfo &updateInfo)
 		/
 		*/
 
-		/*
-		if(!checkGroundContact)
+		if (!checkGroundContact)
 		{
-			const float distGoal = 0; // compute the reward from distance to the goal
+			const float distGoal = BoxDistance(propBBox, gripBBox); // compute the reward from distance to the goal
 
-			if(DEBUG){printf("distance('%s', '%s') = %f\n", gripper->GetName().c_str(), prop->model->GetName().c_str(), distGoal);}
-
-			
-			if( episodeFrames > 1 )
+			if (DEBUG)
 			{
-				const float distDelta  = lastGoalDistance - distGoal;
+				printf("distance('%s', '%s') = %f\n", gripper->GetName().c_str(), prop->model->GetName().c_str(), distGoal);
+			}
+
+			if (episodeFrames > 1)
+			{
+				const float distDelta = lastGoalDistance - distGoal;
 
 				// compute the smoothed moving average of the delta of the distance to the goal
-				avgGoalDelta  = 0.0;
-				rewardHistory = None;
-				newReward     = None;	
+				avgGoalDelta = (avgGoalDelta * ALPHA) + (distDelta * (1 - ALPHA));
+				rewardHistory = REWARD_WIN * exp(-avgGoalDelta);
+				newReward = true;
 			}
 
 			lastGoalDistance = distGoal;
-		} */
+		}
 	}
 
 	// issue rewards and train DQN
