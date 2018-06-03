@@ -36,13 +36,13 @@
 /
 */
 
-#define INPUT_WIDTH 200
-#define INPUT_HEIGHT 200
+#define INPUT_WIDTH 64
+#define INPUT_HEIGHT 64
 #define NUMBER_OF_ACTIONS 2 * DOF
 #define OPTIMIZER "Adam"
-#define LEARNING_RATE 0.01f
+#define LEARNING_RATE 0.1f
 #define REPLAY_MEMORY 20000
-#define BATCH_SIZE 8
+#define BATCH_SIZE 16
 #define USE_LSTM false
 #define LSTM_SIZE 32
 #define ALPHA 0.95
