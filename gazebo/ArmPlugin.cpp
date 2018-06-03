@@ -259,12 +259,12 @@ void ArmPlugin::onCollisionMsg(ConstContactsPtr &contacts)
 		/ TODO - Check if there is collision between the arm and object, then issue learning reward
 		/
 		*/
-		bool collision_object = strcmp(contacts->contact(i).collision1().c_str(), COLLISION_ITEM) == 0;
-		bool collision_gripper = strcmp(contacts->contact(i).collision2().c_str(), COLLISION_POINT) == 0;
+		bool collision_gripper_object = strcmp(contacts->contact(i).gripper_link().c_str(), COLLISION_ITEM) == 0;
+		bool collision_link2_object = strcmp(contacts->contact(i).collision2().c_str(), COLLISION_ITEM) == 0;
 
 		if (collision_object && collision_gripper)
 		{
-			rewardHistory = 200 * REWARD_WIN;
+			rewardHistory = 1000 * REWARD_WIN;
 
 			newReward = true;
 			endEpisode = true;
@@ -627,7 +627,10 @@ void ArmPlugin::OnUpdate(const common::UpdateInfo &updateInfo)
 
 				// compute the smoothed moving average of the delta of the distance to the goal
 				avgGoalDelta = (avgGoalDelta * ALPHA) + (distDelta * (1 - ALPHA));
-				rewardHistory = REWARD_WIN * exp(-avgGoalDelta);
+				if (avgGoalDelta > 0)
+					rewardHistory = REWARD_WIN * exp(-avgGoalDelta);
+				else
+					rewardHistory = REWARD_LOSS * exp(-avgGoalDelta);
 				newReward = true;
 			}
 
