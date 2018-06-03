@@ -40,8 +40,8 @@
 #define INPUT_HEIGHT 200
 #define NUMBER_OF_ACTIONS 2 * DOF
 #define OPTIMIZER "Adam"
-#define LEARNING_RATE 0.1f
-#define REPLAY_MEMORY 10000
+#define LEARNING_RATE 0.01f
+#define REPLAY_MEMORY 20000
 #define BATCH_SIZE 8
 #define USE_LSTM false
 #define LSTM_SIZE 32
