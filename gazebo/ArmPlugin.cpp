@@ -264,7 +264,7 @@ void ArmPlugin::onCollisionMsg(ConstContactsPtr &contacts)
 
 		if (collision_gripper)
 		{
-			rewardHistory = 100 * REWARD_WIN;
+			rewardHistory = 1000 * REWARD_WIN;
 
 			newReward = true;
 			endEpisode = true;
@@ -273,7 +273,7 @@ void ArmPlugin::onCollisionMsg(ConstContactsPtr &contacts)
 		}
 		else if (collision_tube)
 		{
-			rewardHistory = 100 * REWARD_WIN;
+			rewardHistory = 1000 * REWARD_WIN;
 
 			newReward = true;
 			endEpisode = true;
