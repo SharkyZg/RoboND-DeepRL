@@ -40,7 +40,7 @@
 #define INPUT_HEIGHT 64
 #define NUMBER_OF_ACTIONS 2 * DOF
 #define OPTIMIZER "Adam"
-#define LEARNING_RATE 0.1f
+#define LEARNING_RATE 0.05f
 #define REPLAY_MEMORY 20000
 #define BATCH_SIZE 512
 #define USE_LSTM true
@@ -264,7 +264,7 @@ void ArmPlugin::onCollisionMsg(ConstContactsPtr &contacts)
 
 		if (collision_gripper)
 		{
-			rewardHistory = 100000 * REWARD_WIN;
+			rewardHistory = 10000 * REWARD_WIN;
 
 			newReward = true;
 			endEpisode = true;
@@ -273,7 +273,7 @@ void ArmPlugin::onCollisionMsg(ConstContactsPtr &contacts)
 		}
 		else if (collision_tube && !GRIPPER_ONLY)
 		{
-			rewardHistory = 100000 * REWARD_WIN;
+			rewardHistory = 10000 * REWARD_WIN;
 
 			newReward = true;
 			endEpisode = true;
