@@ -36,16 +36,16 @@
 /
 */
 #define GRIPPER_ONLY true
-#define INPUT_WIDTH 128
-#define INPUT_HEIGHT 128
+#define INPUT_WIDTH 64
+#define INPUT_HEIGHT 64
 #define NUMBER_OF_ACTIONS 2 * DOF
 #define OPTIMIZER "Adam"
 #define LEARNING_RATE 0.05f
 #define REPLAY_MEMORY 20000
-#define BATCH_SIZE 512
+#define BATCH_SIZE 128
 #define USE_LSTM true
 #define LSTM_SIZE 256
-#define ALPHA 0.05
+#define ALPHA 0.2
 
 /*
 / TODO - Define Reward Parameters
@@ -627,10 +627,7 @@ void ArmPlugin::OnUpdate(const common::UpdateInfo &updateInfo)
 
 				// compute the smoothed moving average of the delta of the distance to the goal
 				avgGoalDelta = (avgGoalDelta * ALPHA) + (distDelta * (1 - ALPHA));
-				if (avgGoalDelta > 0)
-					rewardHistory = REWARD_WIN * exp(-2.0f*avgGoalDelta);
-				else
-					rewardHistory = REWARD_LOSS * exp(-2.0f*avgGoalDelta);
+				rewardHistory = REWARD_LOSS * exp(avgGoalDelta);
 				newReward = true;
 			}
 
