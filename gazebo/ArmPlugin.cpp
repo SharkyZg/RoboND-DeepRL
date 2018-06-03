@@ -39,7 +39,7 @@
 #define INPUT_WIDTH 512
 #define INPUT_HEIGHT 512
 #define NUMBER_OF_ACTIONS 2*DOF
-#define OPTIMIZER "None"
+#define OPTIMIZER "Adam"
 #define LEARNING_RATE 0.01f
 #define REPLAY_MEMORY 10000
 #define BATCH_SIZE 8
