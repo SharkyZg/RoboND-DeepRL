@@ -264,7 +264,7 @@ void ArmPlugin::onCollisionMsg(ConstContactsPtr &contacts)
 
 		if (collision_gripper)
 		{
-			rewardHistory = REWARD_WIN;
+			rewardHistory = 100 * REWARD_WIN;
 
 			newReward = true;
 			endEpisode = true;
@@ -273,14 +273,14 @@ void ArmPlugin::onCollisionMsg(ConstContactsPtr &contacts)
 		}
 		else if (collision_tube)
 		{
-			rewardHistory = REWARD_WIN;
+			rewardHistory = 100 * REWARD_WIN;
 
 			newReward = true;
 			endEpisode = true;
 		}
 		else
 		{
-			rewardHistory = REWARD_LOSS;
+			rewardHistory = 100 * REWARD_LOSS;
 
 			newReward = true;
 			endEpisode = true;
@@ -602,7 +602,7 @@ void ArmPlugin::OnUpdate(const common::UpdateInfo &updateInfo)
 				printf("GROUND CONTACT, EOE\n");
 			}
 
-			rewardHistory = 10 * REWARD_LOSS;
+			rewardHistory = 100 * REWARD_LOSS;
 			newReward = true;
 			endEpisode = true;
 		}
