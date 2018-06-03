@@ -614,7 +614,7 @@ void ArmPlugin::OnUpdate(const common::UpdateInfo &updateInfo)
 
 		if (!checkGroundContact)
 		{
-			const float distGoal = BoxDistance(propBBox, gripBBox); // compute the reward from distance to the goal
+			const float distGoal = BoxDistance(gripBBox, propBBox); // compute the reward from distance to the goal
 
 			if (DEBUG)
 			{
@@ -627,7 +627,7 @@ void ArmPlugin::OnUpdate(const common::UpdateInfo &updateInfo)
 
 				// compute the smoothed moving average of the delta of the distance to the goal
 				avgGoalDelta = (avgGoalDelta * ALPHA) + (distDelta * (1 - ALPHA));
-				rewardHistory = REWARD_LOSS * avgGoalDelta;
+				rewardHistory = avgGoalDelta;
 				std::cout << rewardHistory << "\n";
 				newReward = true;
 			}
