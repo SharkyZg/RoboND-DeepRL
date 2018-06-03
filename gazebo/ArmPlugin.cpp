@@ -39,7 +39,7 @@
 #define INPUT_WIDTH 64
 #define INPUT_HEIGHT 64
 #define NUMBER_OF_ACTIONS 2 * DOF
-#define OPTIMIZER "RMSprop"
+#define OPTIMIZER "Adam"
 #define LEARNING_RATE 0.1f
 #define REPLAY_MEMORY 20000
 #define BATCH_SIZE 512
