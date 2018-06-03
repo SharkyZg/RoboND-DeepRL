@@ -628,9 +628,9 @@ void ArmPlugin::OnUpdate(const common::UpdateInfo &updateInfo)
 				// compute the smoothed moving average of the delta of the distance to the goal
 				avgGoalDelta = (avgGoalDelta * ALPHA) + (distDelta * (1 - ALPHA));
 				if (avgGoalDelta > 0)
-					rewardHistory = REWARD_WIN * 2*exp(-avgGoalDelta);
+					rewardHistory = REWARD_WIN * 1.5f*exp(-avgGoalDelta);
 				else
-					rewardHistory = REWARD_LOSS * 2*exp(-avgGoalDelta);
+					rewardHistory = REWARD_LOSS * 1.5f*exp(-avgGoalDelta);
 				newReward = true;
 			}
 
