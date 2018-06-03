@@ -40,7 +40,7 @@
 #define INPUT_HEIGHT 64
 #define NUMBER_OF_ACTIONS 2 * DOF
 #define OPTIMIZER "RMSprop"
-#define LEARNING_RATE 0.05f
+#define LEARNING_RATE 0.01f
 #define REPLAY_MEMORY 20000
 #define BATCH_SIZE 128
 #define USE_LSTM true
@@ -627,7 +627,7 @@ void ArmPlugin::OnUpdate(const common::UpdateInfo &updateInfo)
 
 				// compute the smoothed moving average of the delta of the distance to the goal
 				avgGoalDelta = (avgGoalDelta * ALPHA) + (distDelta * (1 - ALPHA));
-				rewardHistory = 10*avgGoalDelta;
+				rewardHistory = avgGoalDelta;
 				std::cout << rewardHistory << "\n";
 				newReward = true;
 			}
