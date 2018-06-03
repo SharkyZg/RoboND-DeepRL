@@ -44,8 +44,8 @@
 #define REPLAY_MEMORY 20000
 #define BATCH_SIZE 128
 #define USE_LSTM true
-#define LSTM_SIZE 256
-#define ALPHA 0.05
+#define LSTM_SIZE 16
+#define ALPHA 0.2
 
 /*
 / TODO - Define Reward Parameters
