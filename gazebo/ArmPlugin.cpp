@@ -45,7 +45,7 @@
 #define BATCH_SIZE 128
 #define USE_LSTM true
 #define LSTM_SIZE 256
-#define ALPHA 0.2
+#define ALPHA 0.05
 
 /*
 / TODO - Define Reward Parameters
@@ -627,7 +627,7 @@ void ArmPlugin::OnUpdate(const common::UpdateInfo &updateInfo)
 
 				// compute the smoothed moving average of the delta of the distance to the goal
 				avgGoalDelta = (avgGoalDelta * ALPHA) + (distDelta * (1 - ALPHA));
-				rewardHistory = REWARD_LOSS * exp(avgGoalDelta);
+				rewardHistory = REWARD_LOSS * avgGoalDelta;
 				newReward = true;
 			}
 
