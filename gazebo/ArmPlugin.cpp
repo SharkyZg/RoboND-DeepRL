@@ -36,8 +36,8 @@
 /
 */
 
-#define INPUT_WIDTH 64
-#define INPUT_HEIGHT 64
+#define INPUT_WIDTH 200
+#define INPUT_HEIGHT 200
 #define NUMBER_OF_ACTIONS 2 * DOF
 #define OPTIMIZER "Adam"
 #define LEARNING_RATE 0.01f
