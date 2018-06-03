@@ -559,7 +559,7 @@ void ArmPlugin::OnUpdate(const common::UpdateInfo &updateInfo)
 	if (maxEpisodeLength > 0 && episodeFrames > maxEpisodeLength)
 	{
 		printf("ArmPlugin - triggering EOE, episode has exceeded %i frames\n", maxEpisodeLength);
-		rewardHistory = REWARD_LOSS*100;
+		rewardHistory = REWARD_LOSS * 100;
 		newReward = true;
 		endEpisode = true;
 	}
@@ -628,9 +628,9 @@ void ArmPlugin::OnUpdate(const common::UpdateInfo &updateInfo)
 				// compute the smoothed moving average of the delta of the distance to the goal
 				avgGoalDelta = (avgGoalDelta * ALPHA) + (distDelta * (1 - ALPHA));
 				if (avgGoalDelta > 0)
-					rewardHistory = REWARD_WIN * 1.5f*exp(-avgGoalDelta);
+					rewardHistory = REWARD_WIN * exp(-2.0f*avgGoalDelta);
 				else
-					rewardHistory = REWARD_LOSS * 1.5f*exp(-avgGoalDelta);
+					rewardHistory = REWARD_LOSS * exp(-2.0f*avgGoalDelta);
 				newReward = true;
 			}
 
